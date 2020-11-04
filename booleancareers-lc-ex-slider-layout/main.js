@@ -1,17 +1,25 @@
 $(document).ready(function () {
+  $('.next').click (function () {
+    var setActive = $('img.active');
 
-  $('.slider-wrapper .prev > i').click(function(){
-    $('.slider-wrapper .images img').addClass('active');
+    setActive.removeClass('active');
 
-    $('.active-first').show("fade",500);
-    
+    if (setActive.hasClass('last')) {
+      $('img.first').addClass('active');
+    } else {
+      setActive.next().addClass('active');
+    }
   });
 
-  $('.slider-wrapper .next > i').click(function(){
-    $('.slider-wrapper .images img').addClass('active');
+  $('.prev').click(function() {
+    var activeEl = $('.images > img.active');
+
+    activeEl.removeClass('active');
+
+    if (activeEl.hasClass('first')) {
+      $('img.last').addClass('active');
+    } else {
+      activeEl.prev().addClass('active');
+    }
   });
-
-
-
-
 });
